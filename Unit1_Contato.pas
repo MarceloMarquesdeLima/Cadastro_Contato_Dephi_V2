@@ -9,10 +9,11 @@ uses
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
   FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, FireDAC.Phys.MSAcc,
   FireDAC.Phys.MSAccDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+  FireDAC.DApt, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons,
+  Vcl.ExtCtrls;
 
 type
-  TForm1 = class(TForm)
+  TFormContato = class(TForm)
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -33,13 +34,16 @@ type
     btn_Proximo: TButton;
     btn_Delete: TButton;
     btn_Editar: TButton;
-    DBGrid1: TDBGrid;
+    DBGrid: TDBGrid;
     Label6: TLabel;
     btn_Cancela: TButton;
     txt_Pesquisa: TEdit;
     Label7: TLabel;
     SpeedButton1: TSpeedButton;
     btn_Sair: TButton;
+    img_Foto: TImage;
+    btn_Imagem: TSpeedButton;
+    OpenDialog: TOpenDialog;
     procedure carrega;
     procedure bloqueia;
     procedure limpa;
@@ -54,6 +58,8 @@ type
     procedure btn_CancelaClick(Sender: TObject);
     procedure btn_SairClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure DBGridDblClick(Sender: TObject);
+    procedure btn_ImagemClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -61,14 +67,16 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormContato: TFormContato;
   estado : integer;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.bloqueia;
+uses Unit2_Principal;
+
+procedure TFormContato.bloqueia;
 begin
   txt_Nome.Enabled := not txt_Nome.Enabled;
   txt_Telefone.Enabled := not txt_Telefone.Enabled;
@@ -76,7 +84,7 @@ begin
   txt_Observacao.Enabled := not txt_Observacao.Enabled;
 end;
 
-procedure TForm1.limpa;
+procedure TFormContato.limpa;
 begin
   txt_ID.Text := '';
   txt_Nome.Text := '';
@@ -87,7 +95,7 @@ begin
   txt_Nome.SetFocus;
 end;
 
-procedure TForm1.SpeedButton1Click(Sender: TObject);
+procedure TFormContato.SpeedButton1Click(Sender: TObject);
 begin
     if not FDContato.FindKey([txt_Pesquisa.Text]) then
        showmessage('Não encontrado!')
@@ -95,13 +103,13 @@ begin
        carrega;
 end;
 
-procedure TForm1.btn_AnteriorClick(Sender: TObject);
+procedure TFormContato.btn_AnteriorClick(Sender: TObject);
 begin
   FDContato.Prior;
   carrega;
 end;
 
-procedure TForm1.btn_CancelaClick(Sender: TObject);
+procedure TFormContato.btn_CancelaClick(Sender: TObject);
 begin
     limpa;
     if estado = 1 then
@@ -112,19 +120,28 @@ begin
     estado := 0;
 end;
 
-procedure TForm1.btn_DeleteClick(Sender: TObject);
+procedure TFormContato.btn_DeleteClick(Sender: TObject);
 begin
     FDContato.Delete;
     carrega;
 end;
 
-procedure TForm1.btn_EditarClick(Sender: TObject);
+procedure TFormContato.btn_EditarClick(Sender: TObject);
 begin
     bloqueia;
     FDContato.Edit;
 end;
 
-procedure TForm1.btn_NovoClick(Sender: TObject);
+procedure TFormContato.btn_ImagemClick(Sender: TObject);
+begin
+   opendialog.Execute();
+   img_Foto.Picture.LoadFromFile(opendialog.FileName);
+   FDContato.Edit;
+   FDContato.FieldByName('foto').Value := opendialog.FileName;
+   FDContato.Post;
+end;
+
+procedure TFormContato.btn_NovoClick(Sender: TObject);
 begin
    FDContato.Insert;
    bloqueia;
@@ -133,25 +150,26 @@ begin
    estado := 1;
 end;
 
-procedure TForm1.btn_ProximoClick(Sender: TObject);
+procedure TFormContato.btn_ProximoClick(Sender: TObject);
 begin
    FDContato.Next;
    carrega;
 end;
 
-procedure TForm1.btn_SairClick(Sender: TObject);
+procedure TFormContato.btn_SairClick(Sender: TObject);
 begin
-    Close;
+    FormContato.Hide;
+    FormPrincipal.Show;
 end;
 
-procedure TForm1.btn_SalvarClick(Sender: TObject);
+procedure TFormContato.btn_SalvarClick(Sender: TObject);
 begin
     FDContato.Post;
     bloqueia;
     showmessage('Informações gravadas com sucesso!');
 end;
 
-procedure TForm1.carrega;
+procedure TFormContato.carrega;
 begin
   if FDContato.FieldByName('id').Value = null then
       txt_ID.Text := ''
@@ -176,10 +194,24 @@ begin
   if FDContato.FieldByName('observacao').Value = null then
       txt_Observacao.Text := ''
   else
-  txt_Observacao.Text := FDContato.FieldByName('observacao').Value;
+      txt_Observacao.Text := FDContato.FieldByName('observacao').Value;
+
+  if FDContato.FieldByName('foto').Value <> null then
+      begin
+        if fileexists(FDContato.FieldByName('foto').Value) then
+            img_foto.Picture.LoadFromFile(FDContato.FieldByName('foto').Value)
+      end
+  else
+       img_foto.Picture := nil;
+
 end;
 
-procedure TForm1.FDContatoBeforePost(DataSet: TDataSet);
+procedure TFormContato.DBGridDblClick(Sender: TObject);
+begin
+   carrega;
+end;
+
+procedure TFormContato.FDContatoBeforePost(DataSet: TDataSet);
 begin
   FDContato.FieldByName('nome').Value := txt_Nome.Text;
   FDContato.FieldByName('Telefone').Value := txt_Telefone.Text;
@@ -187,7 +219,7 @@ begin
   FDContato.FieldByName('observacao').Value := txt_Observacao.Text;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormContato.FormCreate(Sender: TObject);
 begin
   FDConnection1.Params.Database := GetCurrentDir + '\assets\contatos.mdb';
   FDConnection1.Connected := true;
