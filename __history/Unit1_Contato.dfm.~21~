@@ -1,0 +1,312 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Contato'
+  ClientHeight = 565
+  ClientWidth = 553
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 24
+    Top = 16
+    Width = 19
+    Height = 19
+    Caption = 'ID'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 104
+    Top = 16
+    Width = 47
+    Height = 19
+    Caption = 'Nome'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 24
+    Top = 88
+    Width = 72
+    Height = 19
+    Caption = 'Telefone'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 168
+    Top = 88
+    Width = 52
+    Height = 19
+    Caption = 'E-mail'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 24
+    Top = 152
+    Width = 102
+    Height = 19
+    Caption = 'Observa'#231#245'es'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object conexao: TLabel
+    Left = 24
+    Top = 538
+    Width = 163
+    Height = 19
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 24
+    Top = 300
+    Width = 142
+    Height = 19
+    Caption = 'Lista de Cadastro'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object txt_ID: TEdit
+    Left = 24
+    Top = 41
+    Width = 52
+    Height = 27
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+  end
+  object txt_Nome: TEdit
+    Left = 104
+    Top = 41
+    Width = 345
+    Height = 27
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+  end
+  object txt_Telefone: TEdit
+    Left = 24
+    Top = 113
+    Width = 121
+    Height = 27
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+  end
+  object txt_Email: TEdit
+    Left = 168
+    Top = 113
+    Width = 281
+    Height = 27
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+  end
+  object txt_Observacao: TMemo
+    Left = 24
+    Top = 177
+    Width = 425
+    Height = 108
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+  end
+  object btn_Novo: TButton
+    Left = 464
+    Top = 9
+    Width = 65
+    Height = 41
+    Caption = 'Novo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    OnClick = btn_NovoClick
+  end
+  object btn_Salvar: TButton
+    Left = 464
+    Top = 56
+    Width = 65
+    Height = 41
+    Caption = 'Salvar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
+    OnClick = btn_SalvarClick
+  end
+  object btn_Anterior: TButton
+    Left = 464
+    Top = 246
+    Width = 65
+    Height = 28
+    Caption = '<'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 7
+    OnClick = btn_AnteriorClick
+  end
+  object btn_Proximo: TButton
+    Left = 464
+    Top = 277
+    Width = 65
+    Height = 28
+    Caption = '>'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
+    OnClick = btn_ProximoClick
+  end
+  object btn_Delete: TButton
+    Left = 464
+    Top = 150
+    Width = 65
+    Height = 42
+    Caption = 'Delete'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 9
+    OnClick = btn_DeleteClick
+  end
+  object btn_Editar: TButton
+    Left = 464
+    Top = 198
+    Width = 65
+    Height = 42
+    Caption = 'Editar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 10
+    OnClick = btn_EditarClick
+  end
+  object DBGrid1: TDBGrid
+    Left = 24
+    Top = 325
+    Width = 505
+    Height = 211
+    TabOrder = 11
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object btn_Cancela: TButton
+    Left = 464
+    Top = 103
+    Width = 65
+    Height = 41
+    Caption = 'Cancela'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 12
+    OnClick = btn_CancelaClick
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Treinamento\curso_basico_delphi\Cadastro_Contato_Dep' +
+        'hi_V2\Win32\Debug\assets\contatos.mdb'
+      'DriverID=MSAcc')
+    Left = 216
+  end
+  object FDContato: TFDTable
+    BeforePost = FDContatoBeforePost
+    Connection = FDConnection1
+    Left = 280
+  end
+  object DataSource: TDataSource
+    DataSet = FDContato
+    Left = 336
+  end
+end
