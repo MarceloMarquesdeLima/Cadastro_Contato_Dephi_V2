@@ -79,6 +79,12 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object conexao: TLabel
+    Left = 24
+    Top = 293
+    Width = 41
+    Height = 13
+  end
   object txt_ID: TEdit
     Left = 24
     Top = 41
@@ -144,8 +150,60 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 4
   end
+  object btn_Novo: TButton
+    Left = 480
+    Top = 184
+    Width = 65
+    Height = 41
+    Caption = 'Novo'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+  end
+  object btn_Salvar: TButton
+    Left = 551
+    Top = 184
+    Width = 65
+    Height = 41
+    Caption = 'Salvar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
+  end
+  object Button1: TButton
+    Left = 695
+    Top = 8
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 7
+    OnClick = Button1Click
+  end
   object FDConnection1: TFDConnection
-    Left = 488
-    Top = 232
+    Params.Strings = (
+      
+        'Database=C:\Treinamento\curso_basico_delphi\Cadastro_Contato_Dep' +
+        'hi_V2\Win32\Debug\assets\contatos.mdb'
+      'DriverID=MSAcc')
+    Left = 472
+    Top = 272
+  end
+  object FDContato: TFDTable
+    Connection = FDConnection1
+    Left = 536
+    Top = 272
+  end
+  object DataSource: TDataSource
+    DataSet = FDContato
+    Left = 592
+    Top = 272
   end
 end

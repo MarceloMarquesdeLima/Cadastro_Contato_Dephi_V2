@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2023/01/12 04:45:58.425,=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023/01/12 05:26:07.907,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1_Contato.pas=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2023/01/12 05:26:07.907,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1_Contato.dfm=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2023/01/12 05:26:24.810,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Project_Contato_V2.dproj=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+	<Transactions>
+    <Transaction>2023/01/12 04:45:58.000.425,=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/01/12 05:26:07.000.907,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1_Contato.dfm</Transaction>
+    <Transaction>2023/01/12 05:26:07.000.907,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Unit1_Contato.pas</Transaction>
+    <Transaction>2023/01/12 05:26:24.000.810,C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\marce\OneDrive\Bkps\Documentos\Embarcadero\Studio\Projects\Project_Contato_V2.dproj</Transaction>
   </Transactions>
 </BorlandProject>
